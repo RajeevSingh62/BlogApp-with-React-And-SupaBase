@@ -2,9 +2,10 @@ import React from "react";
 import { registerUser } from "../redux/features/auth/AuthThunks";
 import { useDispatch } from "react-redux";
 import supabase from "../services/supabaseClient";
+import { useNavigate } from "react-router-dom";
 
 const RegistrationForm = () => {
-
+    const navigate =useNavigate();
     const dispatch=useDispatch();
 
 const [name, setName] = React.useState("");
@@ -25,15 +26,16 @@ const handleRegister = async (e) => {
     const authUser = await dispatch(registerUser(userData));  // ✅ wait for dispatch to complete
   
     alert("Registration successful!");
+    navigate('/')
   
-    await supabase.from('users').insert([
-      {
-        id: authUser?.user?.id, 
-        email: email,
-        full_name: name,
-        role: role,
-      }
-    ]);
+    // await supabase.from('users').insert([
+    //   {
+    //     id: authUser?.user?.id, 
+    //     email: email,
+    //     full_name: name,
+    //     role: role,
+    //   }
+    // ]);
   
     setName("");
     setEmail("");
@@ -141,7 +143,12 @@ const handleRegister = async (e) => {
         >
           Register
         </button>
+      
       </form>
+      <br />
+        <p>If alreday have a account 
+          <button onClick={()=>navigate('/login')}>login</button>
+        </p>
     </div>
   );
 };

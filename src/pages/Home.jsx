@@ -5,7 +5,7 @@ const Home = () => {
     // console.log(supabase)
   return (
     <div>
-      
+      Dashboard 
     </div>
   )
 }
