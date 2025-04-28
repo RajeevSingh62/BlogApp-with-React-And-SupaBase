@@ -1,19 +1,24 @@
-// src/redux/slices/productsSlice.js
+
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import {supabase} from '../../../services/supabaseClient'
+ import supabase from "../../../services/supabaseClient"
 
 // Async thunk to fetch products
-export const fetchProducts = createAsyncThunk('products/fetchProducts', async () => {
-  const { data, error } = await supabase.from('products').select('*')
+export const fetchProducts = createAsyncThunk(
+    'products/fetchProducts',
+    async () => {
+      const { data, error } = await supabase.from('products').select('*');
+      console.log("products data",data)
+      if (error) {
+        return rejectWithValue(error.message);
+      }
+      console.log("products data",data)
+      dispatch({ type: 'FETCH_DATA_SUCCESS', payload: data });
+      return data;
+    }
+  );
+  
 
-  if (error) {
-    throw new Error(error.message)
-  }
-
-  return data
-})
-console.log("data",data)
 const productsSlice = createSlice({
   name: 'products',
   initialState: {
