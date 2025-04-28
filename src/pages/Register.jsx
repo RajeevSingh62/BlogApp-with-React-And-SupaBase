@@ -28,22 +28,41 @@ const handleRegister = async (e) => {
     alert("Registration successful!");
     navigate('/')
   
-    // await supabase.from('users').insert([
-    //   {
-    //     id: authUser?.user?.id, 
-    //     email: email,
-    //     full_name: name,
-    //     role: role,
-    //   }
-    // ]);
+ 
+    if (authUser?.payload) {
+      const { id } = authUser.payload; // user id from auth
   
-    setName("");
-    setEmail("");
-    setPassword("");
-    setRole("");
+      // 2. Insert into your 'users' table (no password!)
+      const { error } = await supabase.from('users').insert([
+        {
+          id: id,                // uuid from auth
+          full_name: name,
+          email: email,
+          role: role,
+          created_at: new Date(),  // optional
+        }
+      ]);
+  
+      if (error) {
+        console.error('Error inserting into users table:', error.message);
+        alert('Failed to insert into users table!');
+      } else {
+        console.log('User inserted into users table successfully!');
+        alert('Registration successful!');
+        navigate('/');
+      }
+    } else {
+      console.error('Registration failed:', authUser?.error?.message);
+      alert('Registration failed!');
+    }
+  
+    // 3. Clear form fields
+    setName('');
+    setEmail('');
+    setPassword('');
+    setRole('');
   };
   
-
 
   return (
     <div
