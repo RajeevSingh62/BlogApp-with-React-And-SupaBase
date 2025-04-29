@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Navbar() {
+ const[showModal,setShowModal]=useState(false)
+
   return (
     <div style={{ 
       display: "flex", 
@@ -33,7 +36,19 @@ function Navbar() {
       <div style={{ display: "flex", gap: "15px", alignItems: "center" , marginRight:"20px"}}>
         <a href="/add-product" style={{ textDecoration: "none", color: "#333" }}>Add Product</a>
         <a href="/cart" style={{ textDecoration: "none", color: "#333" }}>Cart</a>
-        <a href="/profile" style={{ textDecoration: "none", color: "#333" }}>Profile</a>
+
+        <button style={{ textDecoration: "none", color: "#333" }} onClick={()=>setShowModal(true)}>Profile</button>
+        {/* <Link to="/profile" style={{ textDecoration: "none", color: "#333" }} onClick={()=>setShowModal(true)}>Profile</Link> */}
+
+          {showModal && (
+            <div>
+              <h4>modal is here</h4>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, quaerat?</p>
+              <button onClick={()=>setShowModal(false)}>close</button>
+            </div>
+            
+          )}
+
         <button style={{ padding: "5px 10px", backgroundColor: "#333", color: "white", border: "none", borderRadius: "5px" }}>
           Dark Mode
         </button>

@@ -4,8 +4,13 @@ import ProductCard from './components/ProductCard'
 import RegistrationForm from './pages/Register'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Login from './pages/Login'
+import Profile from './components/Profile'
 
 const App = () => {
+
+
+useeffect
+
   return (
   <>
   <BrowserRouter>
@@ -15,6 +20,7 @@ const App = () => {
     <Route path='/product' element={<ProductCard/>}/>
     <Route  path='/login'  element={<Login/>}/>
     <Route path='/register' element={<RegistrationForm/>}/>
+    <Route path='/profile' element={<Profile/>}/>
     <Route path='*' element={<h1>404 Not Found</h1>}/>
 
    

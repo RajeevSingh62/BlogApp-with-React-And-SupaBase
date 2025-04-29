@@ -4,8 +4,8 @@ import authSlice from "../redux/features/auth/AuthSlice"
 export const store=configureStore({
   
    reducer:{
-    name:productsReducer,
-    name:authSlice
+    products:productsReducer,
+    auth:authSlice
 
    }
 })

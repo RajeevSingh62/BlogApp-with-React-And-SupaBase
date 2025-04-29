@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { loginUser } from '../redux/features/auth/AuthThunks';
+import { loginUser , setUserFromLocalStorage} from '../redux/features/auth/AuthThunks';
 function Login() {
 
 const navigate=useNavigate();
@@ -18,7 +18,13 @@ const handleLogin =async(e)=>{
         password
     }
     console.log("User Data",userData);
+   
+
     const res= await dispatch(loginUser(userData));
+
+
+
+
     if(res.meta.requestStatus === "fulfilled"){
         alert("Login successfull")
         navigate('/')
