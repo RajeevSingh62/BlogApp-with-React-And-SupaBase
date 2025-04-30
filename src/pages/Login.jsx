@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { loginUser , setUserFromLocalStorage} from '../redux/features/auth/AuthThunks';
+import { loginUser } from '../redux/features/auth/AuthThunks';
 function Login() {
 
 const navigate=useNavigate();

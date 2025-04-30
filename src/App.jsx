@@ -7,10 +7,6 @@ import Login from './pages/Login'
 import Profile from './components/Profile'
 
 const App = () => {
-
-
-useeffect
-
   return (
   <>
   <BrowserRouter>
