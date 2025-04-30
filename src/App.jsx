@@ -1,15 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Home from './pages/Home'
 import ProductCard from './components/ProductCard'
 import RegistrationForm from './pages/Register'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Login from './pages/Login'
 import Profile from './components/Profile'
+import { useDispatch, useSelector } from 'react-redux'
+import { setUserFromLocalStorage } from './redux/features/auth/AuthSlice'
 
 const App = () => {
+const dispatch=useDispatch()
 
 
-useeffect
+useEffect(()=>{
+  const userdata=localStorage.getItem('user')
+  if(userdata){
+    const user=JSON.parse(userdata)
+    dispatch(setUserFromLocalStorage(user))
+  }
+},[dispatch])
 
   return (
   <>
