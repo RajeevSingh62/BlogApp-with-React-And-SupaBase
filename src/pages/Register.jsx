@@ -166,7 +166,7 @@ const handleRegister = async (e) => {
       </form>
       <br />
         <p>If alreday have a account 
-          <button onClick={()=>navigate('/login')}>login</button>
+          <button style={{cursor:"pointer"}} onClick={()=>navigate('/login')}>login</button>
         </p>
     </div>
   );

@@ -5,11 +5,12 @@ import RegistrationForm from './pages/Register'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Login from './pages/Login'
 import Profile from './components/Profile'
+import AllUsers from './components/AllUsers'
 
 const App = () => {
 
 
-useeffect
+
 
   return (
   <>
@@ -21,6 +22,8 @@ useeffect
     <Route  path='/login'  element={<Login/>}/>
     <Route path='/register' element={<RegistrationForm/>}/>
     <Route path='/profile' element={<Profile/>}/>
+    <Route path='/allusers' element={<AllUsers/>}/>
+
     <Route path='*' element={<h1>404 Not Found</h1>}/>
 
    

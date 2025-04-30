@@ -1,8 +1,18 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-
+import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logout } from "../redux/features/auth/AuthSlice";
 function Navbar() {
+  const dispatch=useDispatch();
+  const navigate=useNavigate();
+  const logoutuser=()=>{
+    dispatch(logout())  
+    navigate("/login")
+  }
  const[showModal,setShowModal]=useState(false)
+ const user=useSelector((state)=>state.auth.users)
+  console.log("logged in user",user)
 
   return (
     <div style={{ 
@@ -35,6 +45,8 @@ function Navbar() {
       {/* Links */}
       <div style={{ display: "flex", gap: "15px", alignItems: "center" , marginRight:"20px"}}>
         <a href="/add-product" style={{ textDecoration: "none", color: "#333" }}>Add Product</a>
+        <Link to="/allusers" style={{ textDecoration: "none", color: "#333" }}>AllUsers</Link>
+
         <a href="/cart" style={{ textDecoration: "none", color: "#333" }}>Cart</a>
 
         <button style={{ textDecoration: "none", color: "#333" }} onClick={()=>setShowModal(true)}>Profile</button>
@@ -52,7 +64,7 @@ function Navbar() {
         <button style={{ padding: "5px 10px", backgroundColor: "#333", color: "white", border: "none", borderRadius: "5px" }}>
           Dark Mode
         </button>
-        <button style={{ padding: "5px 10px", backgroundColor: "red", color: "white", border: "none", borderRadius: "5px" }}>
+        <button style={{ padding: "5px 10px", backgroundColor: "red", color: "white", border: "none", borderRadius: "5px",cursor:"pointer" }} onClick={logoutuser}>
           Logout
         </button>
       </div>
