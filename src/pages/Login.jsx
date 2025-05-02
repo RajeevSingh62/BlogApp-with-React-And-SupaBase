@@ -100,6 +100,7 @@ const handleLogin =async(e)=>{
           style={{
             color: '#4CAF50',
             textDecoration: 'none',
+            cursor: 'pointer',
           }}
         >
           Sign up

@@ -13,6 +13,7 @@ export const registerUser = createAsyncThunk(
             data: { 
               full_name: fullName,
               role: role  // ➡️ Save role inside metadata
+              // avatar_url: avatarUrl, // optional
             } 
           },
         });
