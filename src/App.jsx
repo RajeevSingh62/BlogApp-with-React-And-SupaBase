@@ -5,11 +5,15 @@ import RegistrationForm from './pages/Register'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Login from './pages/Login'
 import Profile from './components/Profile'
+
 import { useDispatch, useSelector } from 'react-redux'
 import { setUserFromLocalStorage } from './redux/features/auth/AuthSlice'
+import AllUsers from './components/AllUsers'
+
 
 const App = () => {
 const dispatch=useDispatch()
+
 
 
 useEffect(()=>{
@@ -19,6 +23,8 @@ useEffect(()=>{
     dispatch(setUserFromLocalStorage(user))
   }
 },[dispatch])
+
+
 
   return (
   <>
@@ -30,6 +36,8 @@ useEffect(()=>{
     <Route  path='/login'  element={<Login/>}/>
     <Route path='/register' element={<RegistrationForm/>}/>
     <Route path='/profile' element={<Profile/>}/>
+    <Route path='/allusers' element={<AllUsers/>}/>
+
     <Route path='*' element={<h1>404 Not Found</h1>}/>
 
    

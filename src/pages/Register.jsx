@@ -12,56 +12,80 @@ const [name, setName] = React.useState("");
 const [email, setEmail] = React.useState("");       
 const [password, setPassword] = React.useState("");
 const [role, setRole] = React.useState("");
+const [avatarUrl, setAvatarUrl] = React.useState(null); 
+
+
+
 
 const handleRegister = async (e) => {
-    e.preventDefault();
-    const userData = {
-      name,
-      email,
-      password,
-      role
-    };
-    console.log("User Data", userData);
-  
-    const authUser = await dispatch(registerUser(userData));  // ✅ wait for dispatch to complete
-  
-    alert("Registration successful!");
-    navigate('/')
-  
- 
-    if (authUser?.payload) {
-      const { id } = authUser.payload; // user id from auth
-  
-      // 2. Insert into your 'users' table (no password!)
-      const { error } = await supabase.from('users').insert([
-        {
-          id: id,                // uuid from auth
-          full_name: name,
-          email: email,
-          role: role,
-          created_at: new Date(),  // optional
-        }
-      ]);
-  
-      if (error) {
-        console.error('Error inserting into users table:', error.message);
-        alert('Failed to insert into users table!');
-      } else {
-        console.log('User inserted into users table successfully!');
-        alert('Registration successful!');
-        navigate('/');
-      }
-    } else {
-      console.error('Registration failed:', authUser?.error?.message);
-      alert('Registration failed!');
-    }
-  
-    // 3. Clear form fields
-    setName('');
-    setEmail('');
-    setPassword('');
-    setRole('');
+  e.preventDefault();
+
+  const userData = {
+    name,
+    email,
+    password,
+    role,
   };
+
+  const authUser = await dispatch(registerUser(userData));
+
+  if (!authUser?.payload) {
+    alert("Registration failed!");
+    return;
+  }
+
+  const { id } = authUser.payload;
+
+  let avatarUrlInStorage = null;
+
+  // 1️⃣ Upload avatar image to Supabase Storage
+  if (avatarUrl) {
+    const fileExt = avatarUrl.name.split(".").pop();
+    const filePath = `avatars/${id}.${fileExt}`;
+
+    const { error: uploadError } = await supabase.storage
+      .from("avatars")
+      .upload(filePath, avatarUrl);
+
+    if (uploadError) {
+      console.error("Image upload failed:", uploadError.message);
+    } else {
+      const { data: publicUrlData } = supabase.storage
+        .from("avatars")
+        .getPublicUrl(filePath);
+
+      avatarUrlInStorage = publicUrlData.publicUrl;
+    }
+  }
+
+  // 2️⃣ Insert user into custom 'users' table
+  const { error } = await supabase.from("users").insert([
+    {
+      id,
+      full_name: name,
+      email,
+      role,
+      avatar_url: avatarUrlInStorage, // now it's a string URL
+      created_at: new Date(),
+    },
+  ]);
+
+  if (error) {
+    console.error("Insert error:", error.message);
+    alert("Failed to save user data!");
+  } else {
+    alert("Registration successful!");
+    navigate("/");
+  }
+
+  // 3️⃣ Reset form
+  setName("");
+  setEmail("");
+  setPassword("");
+  setRole("");
+  setAvatarUrl(null);
+};
+
   
 
   return (
@@ -127,6 +151,22 @@ const handleRegister = async (e) => {
             }}
           />
         </div>
+        <div style={{ marginBottom: "15px" }}>
+          <label style={{ display: "block", marginBottom: "5px" }}>image</label>
+          <input
+            type="file"
+              accept="image/*"
+            // value={avatarUrl}
+            onChange={(e) =>setAvatarUrl(e.target.files[0])}
+            placeholder="click to upload image"
+            style={{
+              width: "100%",
+              padding: "10px",
+              borderRadius: "4px",
+              border: "1px solid #ccc",
+            }}
+          />
+        </div>
 
         <div style={{ marginBottom: "20px" }}>
           <label style={{ display: "block", marginBottom: "5px" }}>Role</label>
@@ -166,7 +206,9 @@ const handleRegister = async (e) => {
       </form>
       <br />
         <p>If alreday have a account 
-          <button onClick={()=>navigate('/login')}>login</button>
+
+          <button style={{cursor:"pointer", marginLeft:"8px", border:"none", backgroundColor:"none",color:"blue " }} onClick={()=>navigate('/login')}>login</button>
+
         </p>
     </div>
   );
