@@ -6,11 +6,15 @@ const AllUsers = () => {
   const dispatch = useDispatch();
 
   const users = useSelector((state) => state.users.users);
-  // console.log("selectors data", users.users);
+
+
+  console.log("selectors data", users.users);
+
  
   useEffect(() => {
     dispatch(fetchAllUsers());
   }, [dispatch]);
+
 
   // console.log("useer tttttt data ", users);
 
@@ -61,6 +65,10 @@ const AllUsers = () => {
     ))}
   </div>
 </>
+
+
+
+    
 
 
   );
