@@ -17,6 +17,7 @@ export const fetchProducts = createAsyncThunk(
       return data;
     }
   );
+ 
   
 
 const productsSlice = createSlice({

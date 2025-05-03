@@ -9,9 +9,6 @@ import AllUsers from './components/AllUsers'
 
 const App = () => {
 
-
-
-
   return (
   <>
   <BrowserRouter>
