@@ -13,10 +13,25 @@ export const fetchProducts = createAsyncThunk(
         return rejectWithValue(error.message);
       }
       console.log("products data",data)
-      dispatch({ type: 'FETCH_DATA_SUCCESS', payload: data });
+ 
       return data;
     }
   );
+
+  export const getProduct = createAsyncThunk(
+    'products/getProduct',
+    async (productId, { rejectWithValue }) => {
+      const { data, error } = await supabase
+        .from('products')
+        .select('*')
+        .eq('id', productId)
+        .single(); // Ensures only one object is returned
+  
+      if (error) return rejectWithValue(error.message);
+      return data;
+    }
+  );
+
  
   
 
@@ -24,6 +39,7 @@ const productsSlice = createSlice({
   name: 'products',
   initialState: {
     products: [],
+    product:null,
     loading: false,
     error: null,
   },
@@ -41,6 +57,20 @@ const productsSlice = createSlice({
       .addCase(fetchProducts.rejected, (state, action) => {
         state.loading = false
         state.error = action.error.message
+      })
+
+      // handling products by id is here 
+      .addCase(getProduct.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getProduct.fulfilled, (state, action) => {
+        state.loading = false;
+        state.product = action.payload;
+      })
+      .addCase(getProduct.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       })
   },
 })

@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Login from './pages/Login'
 import Profile from './components/Profile'
 import AllUsers from './components/AllUsers'
+import Productdetails from './pages/Productdetails'
 
 const App = () => {
 
@@ -16,6 +17,7 @@ const App = () => {
   <Routes>
     <Route path='/' element={<Home/>}/>
     <Route path='/product' element={<ProductCard/>}/>
+    <Route path='/productdetails/:id' element={<Productdetails/>}/>
     <Route  path='/login'  element={<Login/>}/>
     <Route path='/register' element={<RegistrationForm/>}/>
     <Route path='/profile' element={<Profile/>}/>
