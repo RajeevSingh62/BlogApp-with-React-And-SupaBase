@@ -28,11 +28,12 @@ export const fetchProducts = createAsyncThunk(
         .single(); // Ensures only one object is returned
   
       if (error) return rejectWithValue(error.message);
+      console.log('categorey data', data);  
       return data;
     }
   );
 
- 
+
   
 
 const productsSlice = createSlice({
@@ -72,6 +73,10 @@ const productsSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
+
+   
+
+
   },
 })
 
