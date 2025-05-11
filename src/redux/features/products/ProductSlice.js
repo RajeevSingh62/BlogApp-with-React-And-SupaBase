@@ -43,8 +43,19 @@ const productsSlice = createSlice({
     product:null,
     loading: false,
     error: null,
+    serachTerm: '',
+
   },
-  reducers: {},
+     
+
+  reducers: {
+     setSearchTerm: (state, action) => {
+      state.serachTerm = action.payload;
+      
+
+  },
+  
+},
   extraReducers: (builder) => {
     builder
       .addCase(fetchProducts.pending, (state) => {
@@ -80,4 +91,5 @@ const productsSlice = createSlice({
   },
 })
 
+export const{setSearchTerm}=productsSlice.actions
 export default productsSlice.reducer
