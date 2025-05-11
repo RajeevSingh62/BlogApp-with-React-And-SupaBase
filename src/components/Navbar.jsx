@@ -3,75 +3,90 @@ import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../redux/features/auth/AuthSlice";
+import { setSearchTerm } from "../redux/features/products/ProductSlice";
 function Navbar() {
-  const dispatch=useDispatch();
-  const navigate=useNavigate();
-  const logoutuser=()=>{
-    dispatch(logout())  
-    navigate("/login")
-  }
- const[showModal,setShowModal]=useState(false)
- const user=useSelector((state)=>state.auth.users)
-  console.log("logged in user",user)
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const logoutuser = () => {
+    dispatch(logout());
+    navigate("/login");
+  };
+
+  const [showModal, setShowModal] = useState(false);
+  const user = useSelector((state) => state.auth.users);
+  console.log("logged in user", user);
 
   return (
-    <div style={{ 
-      display: "flex", 
-      justifyContent: "space-between", 
-      alignItems: "center", 
-      top: "0",
-      position: "fixed",
-      backgroundColor: "skyblue", 
+
+    <nav
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding: "10px 20px",
+        backgroundColor: "#f8f9fa",
+        borderBottom: "1px solid #dee2e6",
+      }}
+    >
+      <div style={{ fontSize: "24px", fontWeight: "bold" }}>MyShop</div>
+
+      <input
+        type="text"
+        placeholder="Search..."
+        onChange={(e)=>dispatch(setSearchTerm(e.target.value))}
+        style={{
+          padding: "6px 12px",
+          border: "1px solid #ccc",
+          borderRadius: "4px",
+          fontSize: "14px",
+        }}
+      />
+
+      <div style={{ display: "flex", gap: "15px", alignItems: "center" }}>
+        <Link to="/add-product" style={{ textDecoration: "none", color: "#333" }}>
+          Add Product
+        </Link>
+        <Link to="/allusers" style={{ textDecoration: "none", color: "#333" }}>
+          All Users
+        </Link>
+        <Link to="/cart" style={{ textDecoration: "none", color: "#333" }}>
+          Cart
+        </Link>
+        <button
+         onClick={()=>navigate('/dashboard')}
+          style={{
+            background: "none",
+            border: "none",
+            color: "#333",
+            cursor: "pointer",
+          }}
+        >
+          Profile
+        </button>
+        {/* {showModal && (
+          <div
+            style={{
+              position: "absolute",
+              top: "60px",
+              right: "20px",
+              backgroundColor: "#fff",
+              border: "1px solid #ccc",
+              padding: "15px",
+              borderRadius: "8px",
+              boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
+            }}
+          >
+            <h4>Profile Modal</h4>
+            <p>User details go here.</p>
+            <button onClick={() => setShowModal(false)}>Close</button>
+          </div>
+        )} */}
+        <button onClick={logoutuser} style={{ backgroundColor: "#dc3545", color: "#fff", borderRadius:"5px", padding:"5px 10px"}}>Logout</button>
+      </div>
+    </nav>
     
-      width: "100%",
-      height:"7vh",
-        paddingRight:"20px"
-    }}>
-      
-      {/* Logo */}
-      <div style={{ fontSize: "24px", fontWeight: "bold" }}>
-        MyShop
-      </div>
-
-      {/* Search Bar */}
-      <div>
-        <input 
-          type="text" 
-          placeholder="Search..." 
-          style={{ padding: "5px 10px", borderRadius: "5px", border: "1px solid #ccc" }}
-        />
-      </div>
-
-      {/* Links */}
-      <div style={{ display: "flex", gap: "15px", alignItems: "center" , marginRight:"20px"}}>
-        <a href="/add-product" style={{ textDecoration: "none", color: "#333" }}>Add Product</a>
-        <Link to="/allusers" style={{ textDecoration: "none", color: "#333" }}>AllUsers</Link>
-
-        <a href="/cart" style={{ textDecoration: "none", color: "#333" }}>Cart</a>
-
-        <button style={{ textDecoration: "none", color: "#333" }} onClick={()=>setShowModal(true)}>Profile</button>
-        {/* <Link to="/profile" style={{ textDecoration: "none", color: "#333" }} onClick={()=>setShowModal(true)}>Profile</Link> */}
-
-          {showModal && (
-            <div>
-              <h4>modal is here</h4>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, quaerat?</p>
-              <button onClick={()=>setShowModal(false)}>close</button>
-            </div>
-            
-          )}
-
-        <button style={{ padding: "5px 10px", backgroundColor: "#333", color: "white", border: "none", borderRadius: "5px" }}>
-          Dark Mode
-        </button>
-        <button style={{ padding: "5px 10px", backgroundColor: "red", color: "white", border: "none", borderRadius: "5px",cursor:"pointer" }} onClick={logoutuser}>
-          Logout
-        </button>
-      </div>
-
-    </div>
   );
 }
 
 export default Navbar;
-

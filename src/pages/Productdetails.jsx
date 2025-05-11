@@ -62,6 +62,18 @@ const Productdetails = () => {
             }}>
               Add to Cart
             </button>
+              <button style={{
+              padding: '12px 24px',
+              backgroundColor: '#007bff',
+              color: '#fff',
+              border: 'none',
+              borderRadius: '4px',
+              fontSize: '16px',
+              cursor: 'pointer',
+              marginLeft: '10px'
+            }}>
+            Buy now
+            </button>
           </div>
         </div>
       )}

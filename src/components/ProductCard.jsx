@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import{fetchProducts} from "../redux/features/products/ProductSlice"
 import { useDispatch, useSelector } from 'react-redux'
 
+
 const ProductCard = () => {
 
   const navigate=useNavigate()
@@ -11,6 +12,9 @@ const ProductCard = () => {
 
 const data=useSelector((state)=>state.products.products);
 console.log("data",data)
+const setserachterm=useSelector((store)=>store.products.serachTerm)
+
+const filteredData=data?.filter((item)=>item?.name?.toLowerCase().includes(setserachterm?.toLowerCase() || ''))
 
 useEffect(()=>{
 dispatch(fetchProducts())
@@ -26,7 +30,7 @@ dispatch(fetchProducts())
       padding: '20px',
       fontFamily: 'Arial, sans-serif'
     }}>
-      {data?.map((product) => (
+      {filteredData?.map((product) => (
         <div key={product.id} style={{
           width: '250px',
           border: '1px solid #ccc',
