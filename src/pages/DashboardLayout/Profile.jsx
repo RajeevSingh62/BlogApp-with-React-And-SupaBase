@@ -6,9 +6,9 @@ const Profile = () => {
   const me = useSelector((store) => store.user.userDetails);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchLoggedInUser());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchLoggedInUser());
+  // }, [dispatch]);
 
   return (
     <>
@@ -29,7 +29,7 @@ const Profile = () => {
 
         <div style={{ display: 'flex', alignItems: 'center', marginBottom: '30px' }}>
           <img
-            src={me.avatar_url || 'https://via.placeholder.com/160' }
+            src={me?.avatar_url || 'https://via.placeholder.com/160' }
             alt="Avatar"
             style={{
               width: "160px",
@@ -42,16 +42,16 @@ const Profile = () => {
           />
           <div>
             <p style={{ fontSize: '18px', margin: '10px 0' }}>
-              <strong>Name:</strong> {me.full_name}
+              <strong>Name:</strong> {me?.full_name}
             </p>
             <p style={{ fontSize: '18px', margin: '10px 0' }}>
-              <strong>Email:</strong> {me.email}
+              <strong>Email:</strong> {me?.email}
             </p>
             <p style={{ fontSize: '18px', margin: '10px 0' }}>
-              <strong>Role:</strong> {me.role}
+              <strong>Role:</strong> {me?.role}
             </p>
             <p style={{ fontSize: '18px', margin: '10px 0' }}>
-              <strong>Joined:</strong> {new Date(me.created_at).toLocaleDateString()}
+              <strong>Joined:</strong> {new Date(me?.created_at).toLocaleDateString()}
             </p>
           </div>
         </div>

@@ -18,8 +18,10 @@ const DashboardLayout = () => {
           style={{
             flex: 1, // Take up remaining space
             padding: "20px",
-            marginLeft: "250px", 
-            width: "calc(100% - 250px)", // Ensure it fills the remaining width
+         
+            width: "calc(95% - 250px)", 
+           backgroundColor:"#f4f4f4",
+          margin:"50px 50px"
           }}
         >
           <Outlet />

@@ -1,14 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import './SideBar.css';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchLoggedInUser } from '../../redux/features/UsersDetails/UserSlice';
 
 const SideBar = () => {
+  const me = useSelector((store) => store.user.userDetails);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchLoggedInUser());
+  }, [dispatch]);
   return (
     <>
     <div className='sidebar' >
      <div className='sidebar-header'>
-        <h4>hi Rajeev singh</h4>
+      <img src={me?.avatar_url} alt=""  style={{width:'30px',height:"60px"}}/>
+        <h3>{me?.full_name}</h3>
      </div>
      <ul className='sidebar-menu'>
         <li><Link to="/dashboard/profile">Profile Settings</Link></li>
