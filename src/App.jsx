@@ -11,11 +11,13 @@ import DashboardLayout from "./pages/DashboardLayout/DashboardLayout";
 import Wishlist from "./pages/DashboardLayout/Wishlist";
 import Address from "./pages/DashboardLayout/Address";
 import Orders from "./pages/DashboardLayout/Orders";
+import Navbar from "./components/Navbar";
 
 const App = () => {
   return (
     <>
       <BrowserRouter>
+      <Navbar/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/product" element={<ProductCard />} />

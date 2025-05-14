@@ -10,7 +10,7 @@ const Home = () => {
     // console.log(supabase)
   return (
     <div>
-      <Navbar/>
+      {/* <Navbar/> */}
       {/* <Profile/> */}
       {/* <AllUsers/> */}
         <Categories/>
