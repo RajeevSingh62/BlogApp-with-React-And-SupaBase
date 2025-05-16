@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../redux/features/auth/AuthSlice";
 import { setSearchTerm } from "../redux/features/products/ProductSlice";
 function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location=useLocation();
+
+  const AuthValid=location.pathname==="/login" || location.pathname==='/register'
 
   const logoutuser = () => {
     dispatch(logout());
@@ -29,8 +32,11 @@ function Navbar() {
         borderBottom: "1px solid #dee2e6",
       }}
     >
-      <div style={{ fontSize: "24px", fontWeight: "bold" }}>MyShop</div>
+      <div style={{ fontSize: "24px", fontWeight: "bold" }}>Mybilder</div>
 
+      {!AuthValid  && 
+      <>
+      
       <input
         type="text"
         placeholder="Search..."
@@ -84,6 +90,10 @@ function Navbar() {
         )} */}
         <button onClick={logoutuser} style={{ backgroundColor: "#dc3545", color: "#fff", borderRadius:"5px", padding:"5px 10px"}}>Logout</button>
       </div>
+      
+      </>
+      
+      }
     </nav>
     
   );

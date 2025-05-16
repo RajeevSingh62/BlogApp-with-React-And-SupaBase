@@ -2,7 +2,7 @@ import React from "react";
 import Home from "./pages/Home";
 import ProductCard from "./components/ProductCard";
 import RegistrationForm from "./pages/Register";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import Login from "./pages/Login";
 import Profile from "./pages/DashboardLayout/Profile";
 import AllUsers from "./components/AllUsers";
@@ -12,14 +12,15 @@ import Wishlist from "./pages/DashboardLayout/Wishlist";
 import Address from "./pages/DashboardLayout/Address";
 import Orders from "./pages/DashboardLayout/Orders";
 import Navbar from "./components/Navbar";
+import { Layout } from "./pages/Layout";
 
 const App = () => {
   return (
     <>
       <BrowserRouter>
-      <Navbar/>
+        <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="" element={<Home />} />
           <Route path="/product" element={<ProductCard />} />
           <Route path="/productdetails/:id" element={<Productdetails />} />
           <Route path="/login" element={<Login />} />
