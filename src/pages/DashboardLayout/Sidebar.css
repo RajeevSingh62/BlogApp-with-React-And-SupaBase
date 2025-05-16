@@ -14,7 +14,12 @@
     gap:1rem
 
 }
+.sidebar-header h3 {
+ 
+    margin-top: 10px;
+   
 
+}
 .sidebar-menu {
   list-style: none;
   padding: 0;

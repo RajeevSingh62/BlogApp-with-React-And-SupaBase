@@ -27,6 +27,29 @@ export const registerUser = createAsyncThunk(
     }
   );
   
+  export const updateUser=createAsyncThunk(
+    'auth/updateUser',
+    async ()=>{
+      try {
+        const{data,error}=await supabase.auth.updateUser({
+          email,
+          password,
+          options: { 
+            data: { 
+              full_name: fullName,
+              role: role  // ➡️ Save role inside metadata
+              // avatar_url: avatarUrl, // optional
+            } 
+          },
+        });
+      } catch (error) {
+        return (error.message)
+      }
+    }
+  
+   
+
+  )
 
 export const loginUser = createAsyncThunk(
   'auth/loginUser',
