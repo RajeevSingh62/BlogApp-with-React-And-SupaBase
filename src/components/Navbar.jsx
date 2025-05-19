@@ -7,21 +7,22 @@ import { setSearchTerm } from "../redux/features/products/ProductSlice";
 function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const location=useLocation();
+  const location = useLocation();
 
-  const AuthValid=location.pathname==="/login" || location.pathname==='/register'
+  const AuthValid =
+    location.pathname === "/login" || location.pathname === "/register";
 
   const logoutuser = () => {
     dispatch(logout());
-    navigate("/login");
+    navigate("/");
   };
 
   const [showModal, setShowModal] = useState(false);
-  const user = useSelector((state) => state.auth.users);
+
+  const user = useSelector((state) => state.auth.user);
   console.log("logged in user", user);
 
   return (
-
     <nav
       style={{
         display: "flex",
@@ -34,43 +35,48 @@ function Navbar() {
     >
       <div style={{ fontSize: "24px", fontWeight: "bold" }}>Mybilder</div>
 
-      {!AuthValid  && 
-      <>
-      
-      <input
-        type="text"
-        placeholder="Search..."
-        onChange={(e)=>dispatch(setSearchTerm(e.target.value))}
-        style={{
-          padding: "6px 12px",
-          border: "1px solid #ccc",
-          borderRadius: "4px",
-          fontSize: "14px",
-        }}
-      />
+      {!AuthValid && (
+        <>
+          <input
+            type="text"
+            placeholder="Search..."
+            onChange={(e) => dispatch(setSearchTerm(e.target.value))}
+            style={{
+              padding: "6px 12px",
+              border: "1px solid #ccc",
+              borderRadius: "4px",
+              fontSize: "14px",
+            }}
+          />
 
-      <div style={{ display: "flex", gap: "15px", alignItems: "center" }}>
-        <Link to="/add-product" style={{ textDecoration: "none", color: "#333" }}>
-          Add Product
-        </Link>
-        <Link to="/allusers" style={{ textDecoration: "none", color: "#333" }}>
-          All Users
-        </Link>
-        <Link to="/cart" style={{ textDecoration: "none", color: "#333" }}>
-          Cart
-        </Link>
-        <button
-         onClick={()=>navigate('/dashboard')}
-          style={{
-            background: "none",
-            border: "none",
-            color: "#333",
-            cursor: "pointer",
-          }}
-        >
-          Profile
-        </button>
-        {/* {showModal && (
+          <div style={{ display: "flex", gap: "15px", alignItems: "center" }}>
+            <Link
+              to="/add-product"
+              style={{ textDecoration: "none", color: "#333" }}
+            >
+              Add Product
+            </Link>
+            <Link
+              to="/allusers"
+              style={{ textDecoration: "none", color: "#333" }}
+            >
+              All Users
+            </Link>
+            <Link to="/cart" style={{ textDecoration: "none", color: "#333" }}>
+              Cart
+            </Link>
+            <button
+              onClick={() => navigate("/dashboard")}
+              style={{
+                background: "none",
+                border: "none",
+                color: "#333",
+                cursor: "pointer",
+              }}
+            >
+              Profile
+            </button>
+            {/* {showModal && (
           <div
             style={{
               position: "absolute",
@@ -88,14 +94,21 @@ function Navbar() {
             <button onClick={() => setShowModal(false)}>Close</button>
           </div>
         )} */}
-        <button onClick={logoutuser} style={{ backgroundColor: "#dc3545", color: "#fff", borderRadius:"5px", padding:"5px 10px"}}>Logout</button>
-      </div>
-      
-      </>
-      
-      }
+            <button
+              onClick={logoutuser}
+              style={{
+                backgroundColor: "#dc3545",
+                color: "#fff",
+                borderRadius: "5px",
+                padding: "5px 10px",
+              }}
+            >
+              Logout
+            </button>
+          </div>
+        </>
+      )}
     </nav>
-    
   );
 }
 
