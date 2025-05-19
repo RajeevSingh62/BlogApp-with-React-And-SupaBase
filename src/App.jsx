@@ -1,43 +1,59 @@
 import React from "react";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import Login from "./pages/Login";
+import RegistrationForm from "./pages/Register";
 import Home from "./pages/Home";
 import ProductCard from "./components/ProductCard";
-import RegistrationForm from "./pages/Register";
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
-import Login from "./pages/Login";
-import Profile from "./pages/DashboardLayout/Profile";
-import AllUsers from "./components/AllUsers";
 import Productdetails from "./pages/Productdetails";
 import DashboardLayout from "./pages/DashboardLayout/DashboardLayout";
-import Wishlist from "./pages/DashboardLayout/Wishlist";
-import Address from "./pages/DashboardLayout/Address";
+import Profile from "./pages/DashboardLayout/Profile";
 import Orders from "./pages/DashboardLayout/Orders";
+import Address from "./pages/DashboardLayout/Address";
+import Wishlist from "./pages/DashboardLayout/Wishlist";
+import AllUsers from "./components/AllUsers";
 import Navbar from "./components/Navbar";
-import { Layout } from "./pages/Layout";
+import AuthGuard from "./utils/AuthGuard";
 
-const App = () => {
+const AppContent = () => {
+  const location = useLocation();
+  const hideNavbar = location.pathname === "/login" || location.pathname === "/register";
+
   return (
     <>
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="" element={<Home />} />
+      {!hideNavbar && <Navbar />}
+      <Routes>
+        {/* Public Routes */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<RegistrationForm />} />
+
+        {/* Protected Routes */}
+        <Route element={<AuthGuard />}>
+          <Route path="/" element={<Home />} />
           <Route path="/product" element={<ProductCard />} />
           <Route path="/productdetails/:id" element={<Productdetails />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<RegistrationForm />} />
+          <Route path="/allusers" element={<AllUsers />} />
+
           <Route path="/dashboard" element={<DashboardLayout />}>
             <Route path="profile" element={<Profile />} />
             <Route path="orders" element={<Orders />} />
             <Route path="addresses" element={<Address />} />
             <Route path="wishlist" element={<Wishlist />} />
           </Route>
+        </Route>
 
-          <Route path="/allusers" element={<AllUsers />} />
-
-          <Route path="*" element={<h1>404 Not Found</h1>} />
-        </Routes>
-      </BrowserRouter>
+        {/* Fallback */}
+        <Route path="*" element={<h1>404 Not Found</h1>} />
+      </Routes>
     </>
+  );
+};
+
+const App = () => {
+  return (
+    <BrowserRouter>
+      <AppContent />
+    </BrowserRouter>
   );
 };
 
