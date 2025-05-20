@@ -4,10 +4,11 @@ import './SideBar.css';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchLoggedInUser } from '../../redux/features/UsersDetails/UserSlice';
-
+import { greet } from '../../utils/Greetings';
 const SideBar = () => {
   const me = useSelector((store) => store.user.userDetails);
   const dispatch = useDispatch();
+const greetings=greet();
 
   useEffect(() => {
     dispatch(fetchLoggedInUser());
@@ -17,7 +18,7 @@ const SideBar = () => {
     <div className='sidebar' >
      <div className='sidebar-header'>
       <img src={me?.avatar_url} alt=""  style={{width:'40px',height:"60px", borderRadius:"50%",objectFit:'cover' ,margin:'1px'}}/>
-        <h3> hello {me?.full_name}</h3>
+        <h3> {greetings} {me?.full_name}</h3>
      </div>
      <ul className='sidebar-menu'>
         <li><Link to="/dashboard/profile">Profile Settings</Link></li>
