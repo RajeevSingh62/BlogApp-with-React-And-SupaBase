@@ -7,7 +7,11 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 export const fetchProducts = createAsyncThunk(
     'products/fetchProducts',
     async () => {
-      const { data, error } = await supabase.from('products').select('*');
+      const { data, error } = await supabase.from("products")
+      .select(`
+        *,
+        category:categories (name)
+      `);
       console.log("products data",data)
       if (error) {
         return rejectWithValue(error.message);
@@ -44,6 +48,7 @@ const productsSlice = createSlice({
     loading: false,
     error: null,
     serachTerm: '',
+    isLoading:false,
 
   },
      

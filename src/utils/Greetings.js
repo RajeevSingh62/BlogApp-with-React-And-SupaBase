@@ -1,3 +1,4 @@
+// function for greetings to the users 
 export const greet = () => {
   const ct = new Date().getHours();
   if (ct < 12) {
