@@ -10,6 +10,8 @@ const Profile = () => {
   //   dispatch(fetchLoggedInUser());
   // }, [dispatch]);
 
+ 
+
   return (
     <>
       <div style={{
@@ -42,7 +44,9 @@ const Profile = () => {
           />
           <div>
             <p style={{ fontSize: '18px', margin: '10px 0' }}>
+            
               <strong>Name:</strong> {me?.full_name}
+
             </p>
             <p style={{ fontSize: '18px', margin: '10px 0' }}>
               <strong>Email:</strong> {me?.email}
