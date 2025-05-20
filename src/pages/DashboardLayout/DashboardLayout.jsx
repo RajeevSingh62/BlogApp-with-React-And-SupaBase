@@ -16,7 +16,7 @@ const DashboardLayout = () => {
         <SideBar />
         <div
           style={{
-            flex: 1, // Take up remaining space
+            flex: 1, 
             padding: "20px",
          
             width: "calc(95% - 250px)", 

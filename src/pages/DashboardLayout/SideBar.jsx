@@ -17,7 +17,7 @@ const greetings=greet();
     <>
     <div className='sidebar' >
      <div className='sidebar-header'>
-      <img src={me?.avatar_url} alt=""  style={{width:'40px',height:"60px", borderRadius:"50%",objectFit:'cover' ,margin:'1px'}}/>
+      <img src={me?.avatar_url} alt=""  style={{width:'40px',height:"50px", borderRadius:"50%",objectFit:'cover' ,margin:'1px'}}/>
         <h3> {greetings} {me?.full_name}</h3>
      </div>
      <ul className='sidebar-menu'>
