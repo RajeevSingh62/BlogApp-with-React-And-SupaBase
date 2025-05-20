@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { loginUser } from "../redux/features/auth/AuthThunks";
+import { toast } from "react-toastify";
+
+
 function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -21,12 +24,18 @@ function Login() {
     const res = await dispatch(loginUser(userData));
 
     if (res.meta.requestStatus === "fulfilled") {
-      alert("Login successfull");
-      navigate("/");
+   toast.success("user logged in successfully")
+    setTimeout(()=>{
+        navigate("/");
+    },1500)
+    }
+    else{
+      toast.error("user not found")
     }
   };
 
   return (
+<>
     <div
       style={{
         width: "300px",
@@ -102,6 +111,8 @@ function Login() {
         </a>
       </p>
     </div>
+   
+</>
   );
 }
 

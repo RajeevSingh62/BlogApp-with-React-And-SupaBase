@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -13,14 +14,16 @@ function Navbar() {
     location.pathname === "/login" || location.pathname === "/register";
 
   const logoutuser = () => {
+    
     dispatch(logout());
+     toast.success("Logged out successfully");
     navigate("/");
   };
 
   const [showModal, setShowModal] = useState(false);
 
   const user = useSelector((state) => state.auth.user);
-  console.log("logged in user", user);
+
 
   return (
     <nav
