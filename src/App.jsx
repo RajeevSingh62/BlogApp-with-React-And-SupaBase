@@ -13,6 +13,8 @@ import Address from "./pages/DashboardLayout/Address";
 import Wishlist from "./pages/DashboardLayout/Wishlist";
 import AllUsers from "./components/AllUsers";
 import Navbar from "./components/Navbar";
+import { ToastContainer } from "react-toastify"; 
+import "react-toastify/dist/ReactToastify.css";  
 import AuthGuard from "./utils/AuthGuard";
 
 const AppContent = () => {
@@ -53,6 +55,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <AppContent />
+        <ToastContainer position="top-right" autoClose={3000} /> 
     </BrowserRouter>
   );
 };
