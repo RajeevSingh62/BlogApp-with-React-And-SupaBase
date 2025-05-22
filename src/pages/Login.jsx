@@ -38,7 +38,7 @@ function Login() {
 <>
     <div
       style={{
-        width: "300px",
+        width: "500px",
         margin: "100px auto",
         padding: "30px",
         border: "1px solid #ccc",
@@ -86,7 +86,7 @@ function Login() {
           style={{
             padding: "10px",
             fontSize: "16px",
-            backgroundColor: "#4CAF50",
+            backgroundColor: "rgb(1 119 251)",
             color: "white",
             border: "none",
             borderRadius: "4px",
