@@ -18,7 +18,8 @@ import { configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { combineReducers } from "redux";
-import { thunk } from "redux-thunk"; // ✅ Named import
+import { thunk } from "redux-thunk"; // 
+import blogReducer from "../redux/features/blogs/BlogSlice"
 
 import productsReducer from "../redux/features/products/ProductSlice";
 import authSlice from "../redux/features/auth/AuthSlice";
@@ -32,6 +33,7 @@ const rootReducer = combineReducers({
   users: usersReducer,
   Categories: categoriesReducer,
   user: userReducer,
+  blogs:blogReducer
 });
 
 const persistConfig = {
