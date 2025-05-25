@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 import { Link } from "react-router-dom";
-import "./SideBar.css";
+import "./Sidebar.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLoggedInUser } from "../../redux/features/UsersDetails/UserSlice";
 import { greet } from "../../utils/Greetings";
