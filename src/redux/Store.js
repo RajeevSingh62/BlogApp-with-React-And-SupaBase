@@ -39,7 +39,7 @@ const rootReducer = combineReducers({
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["auth"], // ✅ Only persist auth
+  whitelist: ["auth"], 
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -48,7 +48,7 @@ export const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      serializableCheck: false, // optional: disables warnings from redux-persist
+      serializableCheck: false, 
     }),
 });
 
