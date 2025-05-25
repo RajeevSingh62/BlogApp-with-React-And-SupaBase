@@ -54,10 +54,16 @@ function Navbar() {
 
           <div style={{ display: "flex", gap: "15px", alignItems: "center" }}>
             <Link
-              to="/add-product"
+              to="/admindashboard"
               style={{ textDecoration: "none", color: "#333" }}
             >
-              Add Product
+          admin
+            </Link>
+             <Link
+              to="/blogs"
+              style={{ textDecoration: "none", color: "#333" }}
+            >
+              blogs
             </Link>
             <Link
               to="/allusers"
