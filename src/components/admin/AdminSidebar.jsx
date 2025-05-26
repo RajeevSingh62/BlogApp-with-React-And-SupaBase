@@ -21,16 +21,16 @@ const AdminSidebar = () => {
             src={me?.avatar_url}
             alt=""
             style={{
-              width: "40px",
-              height: "50px",
-              borderRadius: "50%",
+              width: "230px",
+              height: "130px",
+               
               objectFit: "cover",
               margin: "1px",
             }}
           />
           <h3>
             {" "}
-            {greetings} {me?.full_name}
+            {greetings} <br />  {me?.full_name}
           </h3>
         </div>
         <ul className="sidebar-menu">
@@ -38,7 +38,7 @@ const AdminSidebar = () => {
             <Link to="/admindashboard/createblogs">add blogs</Link>
           </li>
           <li>
-            <Link to="/addproduct">All blogs</Link>
+            <Link to="/admindashboard/blogadmin">All blogs</Link>
           </li>
           <li>
             <Link to="/admindashboard/addproduct">Add products</Link>

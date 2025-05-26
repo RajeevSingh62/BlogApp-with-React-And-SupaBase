@@ -32,8 +32,9 @@ function Navbar() {
         justifyContent: "space-between",
         alignItems: "center",
         padding: "10px 20px",
-        backgroundColor: "#f8f9fa",
+        backgroundColor: "rgb(1, 119, 251)",
         borderBottom: "1px solid #dee2e6",
+        height: "80px",
       }}
     >
       <div style={{ fontSize: "24px", fontWeight: "bold" }}>Mybilder</div>

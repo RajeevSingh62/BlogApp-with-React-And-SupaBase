@@ -21,6 +21,7 @@ import Blogdetails from "./components/Blogs/Blogdetails";
 import AdminDashboard from "./components/admin/AdminDashboard";
 import AddProducts from "./components/admin/AddProducts";
 import CreateBlogs from './components/Blogs/CreateBlogs';
+import BlogAdmin from './components/Blogs/BlogAdmin';
 
 const AppContent = () => {
   const location = useLocation();
@@ -56,6 +57,8 @@ const AppContent = () => {
                <Route path="allusers" element={<AllUsers />} />
                <Route path="addproduct" element={<AddProducts/>} />
                 <Route path="createblogs" element={<CreateBlogs/>}/>
+                <Route path="blogadmin" element={<BlogAdmin/>}/>
+
        
           </Route>
         </Route>

@@ -32,9 +32,10 @@ const handleSubmit=(e)=>{
 
    return (
     <div style={{ padding: "40px", maxWidth: "700px", margin: "0 auto" }}>
-      <h2>Add New Blog</h2>
+      <h2 style={{textAlign:"center",padding:'20px'}}> Add New Blog</h2>
       <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
         <input
+        style={{ padding: "10px", fontSize: "16px" }}
           type="text"
           name="title"
           value={FormData.title}
@@ -43,6 +44,7 @@ const handleSubmit=(e)=>{
           required
         />
         <textarea
+        style={{ padding: "10px", fontSize: "16px" }}
           name="content"
           value={FormData.content}
             onChange={handleChange}
@@ -52,6 +54,7 @@ const handleSubmit=(e)=>{
         />
         <input
           type="text"
+          style={{ padding: "10px", fontSize: "16px" }}
           name="image_url"
              value={FormData.image_url}
                onChange={handleChange}
@@ -59,6 +62,7 @@ const handleSubmit=(e)=>{
         />
         <input
           type="text"
+          style={{ padding: "10px", fontSize: "16px" }}
           name="author_id"
              value={FormData.author_id}
                onChange={handleChange}
