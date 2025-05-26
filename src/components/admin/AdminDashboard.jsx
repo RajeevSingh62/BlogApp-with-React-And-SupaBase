@@ -21,7 +21,7 @@ const AdminDashboard = () => {
          
             width: "calc(95% - 250px)", 
            backgroundColor:"#f4f4f4",
-          margin:"50px 50px"
+          margin:"20px 20px 0px 20px"
           }}
         >
           <Outlet/>
