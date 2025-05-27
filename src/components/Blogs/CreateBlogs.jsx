@@ -70,7 +70,7 @@ const handleSubmit=(e)=>{
           placeholder="Author ID"
         
         />
-        <button type="submit" style={{ padding: "10px 20px" }}>Submit</button>
+        <button type="submit" style={{ padding: "10px " }}>Submit</button>
       </form>
     </div>
   );

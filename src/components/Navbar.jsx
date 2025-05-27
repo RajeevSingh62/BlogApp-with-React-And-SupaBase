@@ -37,7 +37,7 @@ function Navbar() {
         height: "80px",
       }}
     >
-      <div style={{ fontSize: "24px", fontWeight: "bold" }}>Mybilder</div>
+      <div onClick={()=>navigate('/')} style={{ fontSize: "24px", fontWeight: "bold" ,cursor:"pointer"}}>Mybilder</div>
 
       {!AuthValid && (
         <>
