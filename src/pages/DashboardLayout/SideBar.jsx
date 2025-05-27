@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
 
-import './SideBar.css';
+
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchLoggedInUser } from '../../redux/features/UsersDetails/UserSlice';
 import { greet } from '../../utils/Greetings';
+import './Sidebar.css';
 const SideBar = () => {
   const me = useSelector((store) => store.user.userDetails);
   const dispatch = useDispatch();

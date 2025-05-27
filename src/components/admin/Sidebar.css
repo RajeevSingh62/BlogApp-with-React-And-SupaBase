@@ -1,0 +1,47 @@
+.sidebar{
+    width:250px;
+    height:100vh;
+    background-color:rgb(23, 31, 41);
+    color: white;
+    top: 0;
+ 
+
+}
+.sidebar-header {
+  margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+   
+   
+    padding: 15px;
+    gap:1rem
+
+}
+.sidebar-header h3 {
+ 
+    margin-top: 10px;
+   
+
+}
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-menu li {
+  margin: 10px 0;
+  padding: 20px;
+  color: white;
+  
+}
+
+.sidebar-menu a {
+  text-decoration: none;
+   color: white;
+  
+  font-weight: 500;
+}
+
+.sidebar-menu a:hover {
+  color: #007bff;
+}

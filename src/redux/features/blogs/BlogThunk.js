@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import supabase from "../../../supabaseClient";
+import supabase from "../../../services/supabaseClient";
 
 // Fetch all blogs
 export const fetchBlogs = createAsyncThunk("blogs/fetchBlogs", async () => {
@@ -11,3 +11,17 @@ export const fetchBlogs = createAsyncThunk("blogs/fetchBlogs", async () => {
   if (error) throw new Error(error.message);
   return data;
 });
+
+export const addblogs=createAsyncThunk(
+  'blogs/addBlogs',
+  async(blogForm)=>{
+  const { data, error } = await supabase
+    .from("blogs")
+    .insert([blogForm])
+    .select()
+    .single();
+
+  if (error) throw new Error(error.message);
+  return data;
+});
+

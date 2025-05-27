@@ -16,6 +16,12 @@ import Navbar from "./components/Navbar";
 import { ToastContainer } from "react-toastify"; 
 import "react-toastify/dist/ReactToastify.css";  
 import AuthGuard from "./utils/AuthGuard";
+import BlogList from "./components/Blogs/BlogList";
+import Blogdetails from "./components/Blogs/Blogdetails";
+import AdminDashboard from "./components/admin/AdminDashboard";
+import AddProducts from "./components/admin/AddProducts";
+import CreateBlogs from './components/Blogs/CreateBlogs';
+import BlogAdmin from './components/Blogs/BlogAdmin';
 
 const AppContent = () => {
   const location = useLocation();
@@ -34,7 +40,12 @@ const AppContent = () => {
           <Route path="/" element={<Home />} />
           <Route path="/product" element={<ProductCard />} />
           <Route path="/productdetails/:id" element={<Productdetails />} />
-          <Route path="/allusers" element={<AllUsers />} />
+       
+          <Route path="blogs" element={<BlogList/>}/>
+          <Route path="/blogs/:id" element={<Blogdetails/>}/>
+         
+           
+
 
           <Route path="/dashboard" element={<DashboardLayout />}>
             <Route path="profile" element={<Profile />} />
@@ -42,7 +53,16 @@ const AppContent = () => {
             <Route path="addresses" element={<Address />} />
             <Route path="wishlist" element={<Wishlist />} />
           </Route>
+            <Route path="/admindashboard" element={<AdminDashboard />}>
+               <Route path="allusers" element={<AllUsers />} />
+               <Route path="addproduct" element={<AddProducts/>} />
+                <Route path="createblogs" element={<CreateBlogs/>}/>
+                <Route path="blogadmin" element={<BlogAdmin/>}/>
+
+       
+          </Route>
         </Route>
+        
 
         {/* Fallback */}
         <Route path="*" element={<h1>404 Not Found</h1>} />

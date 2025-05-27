@@ -32,11 +32,12 @@ function Navbar() {
         justifyContent: "space-between",
         alignItems: "center",
         padding: "10px 20px",
-        backgroundColor: "#f8f9fa",
+        backgroundColor: "rgb(1, 119, 251)",
         borderBottom: "1px solid #dee2e6",
+        height: "80px",
       }}
     >
-      <div style={{ fontSize: "24px", fontWeight: "bold" }}>Mybilder</div>
+      <div onClick={()=>navigate('/')} style={{ fontSize: "24px", fontWeight: "bold" ,cursor:"pointer"}}>Mybilder</div>
 
       {!AuthValid && (
         <>
@@ -54,10 +55,16 @@ function Navbar() {
 
           <div style={{ display: "flex", gap: "15px", alignItems: "center" }}>
             <Link
-              to="/add-product"
+              to="/admindashboard"
               style={{ textDecoration: "none", color: "#333" }}
             >
-              Add Product
+          admin
+            </Link>
+             <Link
+              to="/blogs"
+              style={{ textDecoration: "none", color: "#333" }}
+            >
+              blogs
             </Link>
             <Link
               to="/allusers"
