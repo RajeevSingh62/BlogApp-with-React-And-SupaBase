@@ -1,27 +1,24 @@
-import React from 'react'
-import {fetchBlogs} from '../../redux/features/blogs/BlogThunk'
+import React, { useEffect } from 'react'
+import {fetchBlogs,deleteBlog} from '../../redux/features/blogs/BlogThunk'
 import { useDispatch, useSelector } from 'react-redux';
 
 const BlogAdmin = () => {
 
-const {blogs}=useSelector((state) => state.blogs);
 
+const dispatch = useDispatch();
+  const { blogs, loading, error } = useSelector((state) => state.blogs);
+console.log("blogs admin", blogs)
+  useEffect(() => {
+    dispatch(fetchBlogs());
+  }, [dispatch]);
 
+ const handleDelete=(id)=>{
+  if(window.confirm("Are you sure you want to delete this blog?")){
+    dispatch(deleteBlog(id))
+  }
+ }
   
-  const dummyBlogs = [
-    {
-      id: 1,
-      title: 'Understanding React Hooks',
-      author: 'Rajeev Singh',
-      createdAt: '2025-05-25',
-    },
-    {
-      id: 2,
-      title: 'Getting Started with Supabase',
-      author: 'John Doe',
-      createdAt: '2025-05-24',
-    },
-  ];
+
 
   return (
     <div style={{ padding: '40px', maxWidth: '100%', margin: '0 auto' }}>
@@ -37,12 +34,12 @@ const {blogs}=useSelector((state) => state.blogs);
           </tr>
         </thead>
         <tbody>
-          {dummyBlogs.map((blog, index) => (
+          {blogs?.map((blog, index) => (
             <tr key={blog.id}>
               <td style={{ padding: '12px', border: '1px solid #ddd', textAlign: 'center' }}>{index + 1}</td>
               <td style={{ padding: '12px', border: '1px solid #ddd', textAlign: 'center' }}>{blog.title}</td>
-              <td style={{ padding: '12px', border: '1px solid #ddd', textAlign: 'center' }}>{blog.author}</td>
-              <td style={{ padding: '12px', border: '1px solid #ddd', textAlign: 'center' }}>{blog.createdAt}</td>
+              <td style={{ padding: '12px', border: '1px solid #ddd', textAlign: 'center' }}>{blog.author_id.full_name ||'unknown author'}</td>
+              <td style={{ padding: '12px', border: '1px solid #ddd', textAlign: 'center' }}>{new Date(blog.created_at).toLocaleDateString()}</td>
               <td style={{ padding: '12px', border: '1px solid #ddd', textAlign: 'center' }}>
                 <button
                   style={{
@@ -58,6 +55,8 @@ const {blogs}=useSelector((state) => state.blogs);
                   Edit
                 </button>
                 <button
+                  onClick={() => handleDelete(blog.id)}
+
                   style={{
                     padding: '6px 12px',
                     backgroundColor: '#f44336',

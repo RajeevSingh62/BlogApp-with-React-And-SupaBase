@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchBlogs, addblogs } from "./BlogThunk";
+import { fetchBlogs, addblogs,deleteBlog } from "./BlogThunk";
 
 const  initialState={
     blogs: [],
@@ -28,8 +28,12 @@ const blogSlice=createSlice({
     
       .addCase( addblogs.fulfilled, (state, action) => {
         state.blogs.unshift(action.payload); 
-      }); 
+      })
        
+      .addCase(deleteBlog.fulfilled,(state,action)=>{
+
+        state.blogs = state.blogs.filter((blog) => blog.id !== action.payload);
+      })
 
      }
 })
