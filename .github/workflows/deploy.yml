@@ -1,0 +1,32 @@
+name: Netlify CI
+
+on:
+  push:
+    branches:
+      - main  # or your default branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests (optional)
+        run: npm test  # You can remove this line if you don’t have tests
+
+      - name: Build the project
+        run: npm run build
+
+      - name: Trigger Netlify Deployment
+        run: |
+          curl -X POST -d '{}' https://api.netlify.com/build_hooks/6836eb8aa6ca1f4c20c8dc95
