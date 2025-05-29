@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import {fetchBlogs,deleteBlog} from '../../redux/features/blogs/BlogThunk'
 import { useDispatch, useSelector } from 'react-redux';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
 
 const BlogAdmin = () => {
 
@@ -18,11 +20,32 @@ console.log("blogs admin", blogs)
   }
  }
   
+// Function to generate PDF
 
+const exportPdf=()=>{
+  const docs=new jsPDF();
+    // Table headers
+    const head= [['Sr. No.', 'Title', 'Author', 'Created At']];
+    // Table data
+    const data=blogs.map((blog,index)=>[
+      index+1,
+      blog.title,
+      blog.author_id.full_name || 'unknown author',
+      new Date(blog.created_at).toLocaleDateString()
+
+    ]);
+    autoTable(docs,{
+      head:head,
+      body:data,
+    });
+    docs.save('tableData.pdf');
+}
 
   return (
     <div style={{ padding: '40px', maxWidth: '100%', margin: '0 auto' }}>
+       <div ><button style={{backgroundColor:'lightblue',padding:"8px",cursor:"pointer"}} onClick={()=>exportPdf()}>export data</button></div>
       <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Blog List</h2>
+     
       <table style={{ width: '100%', borderCollapse: 'collapse' }}>
         <thead>
           <tr style={{ backgroundColor: '#f2f2f2' }}>
