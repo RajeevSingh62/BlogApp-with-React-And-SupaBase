@@ -1,4 +1,8 @@
 import React, { useEffect } from "react";
+import { VscDashboard } from "react-icons/vsc";
+import { IoIosAddCircleOutline } from "react-icons/io";
+import { LiaBlogSolid } from "react-icons/lia";
+import { HiUsers } from "react-icons/hi";
 
 import { Link } from "react-router-dom";
 import "./Sidebar.css";
@@ -21,32 +25,48 @@ const AdminSidebar = () => {
             src={me?.avatar_url}
             alt=""
             style={{
-              width: "230px",
-              height: "130px",
-               
-              objectFit: "cover",
+              width: "auto",
+              height: "160px",
+
+              objectFit: "contains",
               margin: "1px",
             }}
           />
+
           <h3>
             {" "}
-            {greetings} <br />  {me?.full_name}
+            {greetings} <br /> {me?.full_name}
           </h3>
         </div>
         <ul className="sidebar-menu">
           <li>
-            <Link to="/admindashboard/createblogs">add blogs</Link>
+            <Link to="/admindashboard" className="menu-link">
+              <VscDashboard size={20} />
+              <span>Dashboard</span>
+            </Link>
           </li>
           <li>
-            <Link to="/admindashboard/blogadmin">All blogs</Link>
+            <Link to="/admindashboard/createblogs" className="menu-link">
+              <IoIosAddCircleOutline size={20} />
+              <span>Add blogs</span>
+            </Link>
           </li>
           <li>
-            <Link to="/admindashboard/addproduct">Add products</Link>
+            <Link to="/admindashboard/blogadmin" className="menu-link">
+              <LiaBlogSolid size={20} />
+              <span>All blogs</span>
+            </Link>
+          </li>
+
+          <li>
+            <Link to="/admindashboard/allusers" className="menu-link">
+              <HiUsers size={20} />
+              <span>Users</span>
+            </Link>
           </li>
           <li>
-            <Link to="/admindashboard/allusers">all users</Link>
+            <span className="menu-link">Address</span>
           </li>
-          <li>Address</li>
         </ul>
       </div>
     </>

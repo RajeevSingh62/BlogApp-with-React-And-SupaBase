@@ -58,7 +58,7 @@ function Navbar() {
               to="/admindashboard"
               style={{ textDecoration: "none", color: "#333" }}
             >
-          admin
+    <span>      admin</span>
             </Link>
              <Link
               to="/blogs"

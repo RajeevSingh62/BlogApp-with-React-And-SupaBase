@@ -51,12 +51,14 @@ const AllUsers = () => {
           alt={user.avatar_url}
           style={{
             width: '150px',
-            height: '150px',
+            height: 'auto',
             objectFit: 'cover',
           }}
         />
         <div style={{ padding: '16px', flex: 1 }}>
           <p style={{ margin: '8px 0', fontWeight: 'bold' }}>👤 Username: {user.full_name}</p>
+          <p style={{ margin: '8px 0', fontWeight: 'bold' }}>Status:{user?.isactive? "🟢Active" :"🔴InActive"}</p>
+
           <p style={{ margin: '8px 0' }}>📧 Email: {user.email}</p>
           <p style={{ margin: '8px 0' }}>🔐 Role: {user.role}</p>
           <p style={{ margin: '8px 0' }}>📅 Created At: {new Date(user.created_at).toLocaleString()}</p>
