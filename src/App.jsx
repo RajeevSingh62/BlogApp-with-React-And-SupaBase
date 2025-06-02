@@ -55,7 +55,7 @@ const AppContent = () => {
             <Route path="wishlist" element={<Wishlist />} />
           </Route>
             <Route path="/admindashboard" element={<AdminDashboard />}>
-               <Route path="admindashboard" element={<AdminMainDashboard />} />
+               <Route path="admindashboardmain" element={<AdminMainDashboard />} />
 
                <Route path="allusers" element={<AllUsers />} />
                <Route path="addproduct" element={<AddProducts/>} />

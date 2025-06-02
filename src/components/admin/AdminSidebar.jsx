@@ -40,7 +40,7 @@ const AdminSidebar = () => {
         </div>
         <ul className="sidebar-menu">
           <li>
-            <Link to="/admindashboard" className="menu-link">
+            <Link to="/admindashboard/admindashboardmain" className="menu-link">
               <VscDashboard size={20} />
               <span>Dashboard</span>
             </Link>

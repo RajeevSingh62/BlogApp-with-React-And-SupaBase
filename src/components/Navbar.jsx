@@ -14,16 +14,14 @@ function Navbar() {
     location.pathname === "/login" || location.pathname === "/register";
 
   const logoutuser = () => {
-    
     dispatch(logout());
-     toast.success("Logged out successfully");
+    toast.success("Logged out successfully");
     navigate("/");
   };
 
   const [showModal, setShowModal] = useState(false);
 
   const user = useSelector((state) => state.auth.user);
-
 
   return (
     <nav
@@ -37,7 +35,12 @@ function Navbar() {
         height: "80px",
       }}
     >
-      <div onClick={()=>navigate('/')} style={{ fontSize: "24px", fontWeight: "bold" ,cursor:"pointer"}}>Mybilder</div>
+      <div
+        onClick={() => navigate("/")}
+        style={{ fontSize: "24px", fontWeight: "bold", cursor: "pointer" }}
+      >
+        Mybilder
+      </div>
 
       {!AuthValid && (
         <>
@@ -53,24 +56,21 @@ function Navbar() {
             }}
           />
 
-          <div style={{ display: "flex", gap: "15px", alignItems: "center" }}>
+          <div style={{ display: "flex", gap: "15px", alignItems: "center",fontSize: "18px" }}>
             <Link
               to="/admindashboard"
               style={{ textDecoration: "none", color: "#333" }}
             >
-    <span>      admin</span>
+              <span> admin</span>
             </Link>
-             <Link
-              to="/blogs"
-              style={{ textDecoration: "none", color: "#333" }}
-            >
+            <Link to="/blogs" style={{ textDecoration: "none", color: "#333" }}>
               blogs
             </Link>
             <Link
               to="/allusers"
               style={{ textDecoration: "none", color: "#333" }}
             >
-            cicd(test)
+              cicd(test)
             </Link>
             <Link to="/cart" style={{ textDecoration: "none", color: "#333" }}>
               Cart
