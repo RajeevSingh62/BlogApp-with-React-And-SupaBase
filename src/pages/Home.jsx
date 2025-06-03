@@ -6,17 +6,18 @@ import AllUsers from '../components/AllUsers'
 import ProductCard from '../components/ProductCard'
 import Categories from '../components/Categories'
 import AuthGuard from '../utils/AuthGuard'
+import Carousel from './Carousel'
+import Footer from './Footer'
 
 const Home = () => {
     // console.log(supabase)
   return (
     <div>
-      {/* <Navbar/> */}
-      {/* <Profile/> */}
-      {/* <AllUsers/> */}
-        <Categories/>
-      <ProductCard/>
-
+     
+        {/* <Categories/>
+      <ProductCard/> */}
+      <Carousel/>
+      <Footer/>
     
   
      
