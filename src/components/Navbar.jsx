@@ -70,7 +70,7 @@ function Navbar() {
               to="/allusers"
               style={{ textDecoration: "none", color: "#333" }}
             >
-              cicd(test)
+              {/* cicd(test) */}
             </Link>
             <Link to="/cart" style={{ textDecoration: "none", color: "#333" }}>
               Cart

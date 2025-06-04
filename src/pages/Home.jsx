@@ -8,15 +8,18 @@ import Categories from '../components/Categories'
 import AuthGuard from '../utils/AuthGuard'
 import Carousel from './Carousel'
 import Footer from './Footer'
+import MainBody from './MainBody'
+import About from './About'
 
 const Home = () => {
     // console.log(supabase)
   return (
     <div>
      
-        {/* <Categories/>
-      <ProductCard/> */}
+      
       <Carousel/>
+      <MainBody/>
+      <About/>
       <Footer/>
     
   
