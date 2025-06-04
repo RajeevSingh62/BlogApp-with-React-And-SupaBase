@@ -81,6 +81,16 @@ const AdminMainDashboard = () => {
     },
   };
 
+const blogsPerMonth={};
+totalBlogs.forEach((blog)=>{
+  const data=new Date(blog.created_at).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+  }); 
+  blogsPerMonth[data] = (blogsPerMonth[data] || 0) + 1;
+})
+console.log("blogs per month", blogsPerMonth);
+
   //user per month chart data
   const userData = {
     labels: [
