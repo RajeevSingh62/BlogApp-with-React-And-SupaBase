@@ -1,12 +1,77 @@
-# React + Vite
+# 📰 CMS Dashboard with Supabase
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a full-featured Content Management System (CMS) dashboard built using **React.js**, **Redux Toolkit**, **Supabase**, and **Chart.js**. The application allows administrators to manage blogs, track user statistics, and visualize key performance metrics through an interactive UI.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔧 Tech Stack
 
-## Expanding the ESLint configuration
+- **Frontend:** React.js, React Router
+- **State Management:** Redux Toolkit + Redux Thunk
+- **Backend as a Service (BaaS):** Supabase (Database, Auth, Storage)
+- **Charts and Visualization:** Chart.js (via react-chartjs-2)
+- **Styling:** Inline CSS, Flexbox (Responsive Layout)
+- **API Testing:** Postman (for Supabase REST API endpoints)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## ✨ Features Implemented
+
+### ✅ Authentication
+- User registration and login via Supabase Auth
+- Role-based dashboard (admin only access)
+
+### ✅ Blog Management
+- Create, read, and list blogs
+- Upload blog images to Supabase Storage
+- Display blog creation stats per month (bar chart)
+- Blog table with title, author, and date
+
+### ✅ User Management
+- Track total users, active users, and inactive users
+- Display users per month on a bar chart
+- Top authors section with blog count and profile image
+- Role-based metadata from Supabase `users` table
+
+### ✅ Dashboard Metrics
+- Dynamic cards showing:
+  - Total Users
+  - Number of Blogs
+  - Active Users
+  - Inactive Users
+- Graphs:
+  - 📊 Blogs Created Per Month
+  - 📊 Users Registered Per Month
+- Top 5 Authors Table with:
+  - Profile Image
+  - Full Name
+  - Blog Count
+
+---
+
+## 📊 Charts
+
+Implemented using **Chart.js** (via `react-chartjs-2`):
+
+- Blogs per Month (based on `created_at`)
+- Users per Month (based on `created_at`)
+- Data transformed dynamically for 12-month summary
+- Option to use fixed month labels or actual grouped month strings
+
+---
+
+## 🧠 Supabase Details
+
+- **Tables Used:**
+  - `users`: stores user data, `isActive`, `avatar_url`, and `created_at`
+  - `blogs`: stores blog entries with `author_id` and `created_at`
+- **Storage Bucket:** For storing blog images (bucket: `blogs`)
+- **Row-Level Security (RLS):** Enabled
+- **API Usage:**
+  - RESTful endpoints tested with Postman
+  - Serverless-like custom logic handled in frontend (using Supabase SDK)
+
+---
+
+
+
