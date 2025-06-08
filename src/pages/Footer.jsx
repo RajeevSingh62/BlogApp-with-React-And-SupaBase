@@ -1,6 +1,9 @@
 // Footer.js
 import React from 'react';
-
+import { Link, NavLink } from 'react-router-dom';
+import { FaInstagram } from "react-icons/fa6";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaFacebook } from "react-icons/fa";
 const Footer = () => {
   const styles = {
     footer: {
@@ -75,15 +78,43 @@ const Footer = () => {
         </div>
 
         {/* Social Media */}
-        <div style={styles.section}>
-          <h3 style={styles.heading}>Follow Me</h3>
-          <div style={styles.socialIcons}>
-            <a href="#" style={styles.icon}><i className="fab fa-facebook-f"></i></a>
-            <a href="#" style={styles.icon}><i className="fab fa-twitter"></i></a>
-            <a href="#" style={styles.icon}><i className="fab fa-instagram"></i></a>
-            <a href="#" style={styles.icon}><i className="fab fa-github"></i></a>
-          </div>
-        </div>
+        {/* Social Media */}
+<div style={styles.section}>
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+    <h3 style={styles.heading}>Follow Me</h3>
+
+    <a
+      href="https://www.facebook.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#ccc', textDecoration: 'none' }}
+    >
+      <FaFacebook />
+      <span>Facebook</span>
+    </a>
+
+    <a
+      href="https://www.twitter.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#ccc', textDecoration: 'none' }}
+    >
+      <FaXTwitter size={20} />
+      <span>Twitter</span>
+    </a>
+
+    <a
+      href="https://www.instagram.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#ccc', textDecoration: 'none' }}
+    >
+      <FaInstagram size={20} />
+      <span>Instagram</span>
+    </a>
+  </div>
+</div>
+
       </div>
 
       {/* Footer Bottom */}

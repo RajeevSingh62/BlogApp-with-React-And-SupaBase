@@ -10,6 +10,7 @@ import Carousel from './Carousel'
 import Footer from './Footer'
 import MainBody from './MainBody'
 import About from './About'
+import BlogList from '../components/Blogs/BlogList'
 
 const Home = () => {
     // console.log(supabase)
@@ -18,7 +19,8 @@ const Home = () => {
      
       
       <Carousel/>
-      <MainBody/>
+      <BlogList/>
+      {/* <MainBody/> */}
       <About/>
       <Footer/>
     

@@ -29,10 +29,14 @@ function Navbar() {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        padding: "10px 20px",
+        padding: "10px 10px 20px 10px ",
         backgroundColor: "rgb(1, 119, 251)",
         borderBottom: "1px solid #dee2e6",
         height: "80px",
+      
+       
+      
+
       }}
     >
       <div
@@ -72,9 +76,9 @@ function Navbar() {
             >
               {/* cicd(test) */}
             </Link>
-            <Link to="/cart" style={{ textDecoration: "none", color: "#333" }}>
+            {/* <Link to="/cart" style={{ textDecoration: "none", color: "#333" }}>
               Cart
-            </Link>
+            </Link> */}
             <button
               onClick={() => navigate("/dashboard")}
               style={{

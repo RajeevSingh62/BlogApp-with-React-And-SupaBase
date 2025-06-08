@@ -1,4 +1,4 @@
-import React from "react";
+import React, { use, useEffect } from "react";
 import { data } from "react-router-dom";
 import {
   Chart as ChartJS,
@@ -8,13 +8,22 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+
 import { Bar } from "react-chartjs-2";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {fetchAllUsers} from "../../redux/features/users/UserSlice";
+import {fetchBlogs} from "../../redux/features/blogs/BlogThunk";
 const AdminMainDashboard = () => {
+  const dispatch = useDispatch();
   const userdetails = useSelector((state) => state.users);
-  console.log("dashboard userdetails", userdetails);
+
   const totalUsers = userdetails?.users?.length || 0;
-  console.log("total users", totalUsers);
+
+  useEffect(() => {
+    dispatch(fetchAllUsers());
+    dispatch(fetchBlogs());
+    
+  }, [dispatch]);
 
   const activeUsers =
     userdetails?.users?.filter((user) => user.isactive === true).length || 0;

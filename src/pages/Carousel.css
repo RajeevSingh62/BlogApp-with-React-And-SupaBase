@@ -1,0 +1,16 @@
+.custom-prev-arrow, .custom-next-arrow {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1000;
+}
+.custom-prev-arrow {
+  position: absolute;
+  left: 10px;
+}
+.custom-next-arrow {
+  position: absolute;
+  right: 10px;
+}
